@@ -1,6 +1,7 @@
-age = int(input("Enter your age:"))
+def Say_hello():
+    print("Hello Hamza" )
+    print("Welcome to python")
 
-if age >= 18:
-    print("You can vote.")
-else:
-    print("You are too young.")
+Say_hello()
+Say_hello()
+Say_hello()
