@@ -28,10 +28,13 @@ words = text.split()
 
 unique_words = set(words)
 
+common_words = set(words)
+
 def menu():
     print("========= TEXT FILE ANALYZER =========")
     print("Total Lines :", len(lines))
     print("Total Words :", len(words))
     print("Unique Words:", len(unique_words))
+    print("common Words:", len(common_words))
 
 menu()
