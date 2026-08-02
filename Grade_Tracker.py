@@ -4,6 +4,9 @@ students = []
 def add_student():
     name = input("Enter Student Name:")
     grade = float(input("Enter Student Grade:"))
+    if grade < 0 or grade > 100:
+        print("Invalid grade. Please enter a grade between 0 and 100.")
+        return
     students.append({"name": name, "grade": grade})
     print( students)
     
