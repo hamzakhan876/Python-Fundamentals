@@ -9,7 +9,8 @@ def multiply(num1,num2):
 
 def divide(num1,num2):
     if num2 == 0:
-        return "Error! Division by zero."
+        exception = ZeroDivisionError("cannot divide by zero")
+        raise exception
     return num1 / num2
 
 def exit():
