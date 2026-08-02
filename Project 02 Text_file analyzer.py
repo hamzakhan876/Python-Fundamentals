@@ -1,7 +1,12 @@
 file  = open("Data.Txt", "w")
 file.write("Iam learning Python!")
 file.close()
-
+try:
+    file = open("Data.Txt")
+except FileNotFoundError:
+    print("File not found")
+finally:
+    print("File closed")
 file = open("Data.Txt", "r")
 data = file.read()
 file.close()
