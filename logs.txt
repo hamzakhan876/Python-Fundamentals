@@ -1,0 +1,8 @@
+INFO Application Started
+INFO User Logged In
+WARNING Low Memory
+ERROR Database Connection Failed
+INFO File Uploaded
+WARNING Disk Almost Full
+ERROR Invalid Password
+INFO Application Closed
