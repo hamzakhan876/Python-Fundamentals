@@ -1,41 +1,29 @@
-from tasks  import TodoList
-from storage import save_tasks, load_tasks
+import requests
+import os
+import json
+from dotenv import load_dotenv
 
+load_dotenv()
 
-todo = TodoList()
-load_tasks(todo)
+url = "https://newsapi.org/v2/top-headlines"
 
-while True:
-    print("\n===== TO-DO LIST =====")
-    print("1. Add Task")
-    print("2. Remove Task")
-    print("3. Mark Complete")
-    print("4. Show Tasks")
-    print("5. Save & Exit")
+params = {
+    "country": "us",
+    "apiKey": os.getenv("NEWS_API_KEY")
+}
 
-    choice = input("Choose an option: ")
+response = requests.get(url, params=params)
 
-    if choice == "1":
-        title = input("Task title: ")
-        todo.add_task(title)
+print(response.status_code)
 
-    elif choice == "2":
-        todo.show_tasks()
-        number = int(input("Task number: ")) - 1
-        todo.remove_task(number)
+data = response.json()
 
-    elif choice == "3":
-        todo.show_tasks()
-        number = int(input("Task number: ")) - 1
-        todo.complete_task(number)
+articles = data["articles"]
 
-    elif choice == "4":
-        todo.show_tasks()
+for article in articles:
+    print(article["title"])
 
-    elif choice == "5":
-        save_tasks(todo)
-        print("Tasks saved. Goodbye!")
-        break
+with open("news.json", "w", encoding="utf-8") as file:
+    json.dump(data, file, indent=4)
 
-    else:
-        print("Invalid option.")
+print("News saved successfully!")
